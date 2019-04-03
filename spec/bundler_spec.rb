@@ -38,9 +38,9 @@ describe "Bundler" do
     end
 
     # http://bundler.io/git.html
-    # it "should list the awesome_print gem specifying a remote git repository (use github)" do
-    #   expect(@gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
-    # end
+    it "should list the awesome_print gem specifying a remote git repository (use github)" do
+      expect(@gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
+    end
 
     describe "groups" do
       after :each do
@@ -60,18 +60,18 @@ describe "Bundler" do
       end
 
       # http://bundler.io/v1.3/groups.html
-  #     it "should contain the rspec gem in the test group using block syntax" do
-  #       expect(@gemfile_text =~ /group (:test|['"]test['"]) do/).not_to eq(nil)
-  #       expect(@bundle_output =~ /rspec/).not_to eq(nil)
-  #
-  #       bundle_output_without_test = ""
-  #       Bundler.with_clean_env do
-  #         bundle_output_without_test = `bundle --without test`
-  #       end
-  #       expect(bundle_output_without_test =~ /rspec/).to eq(nil)
-  #     end
-  #   end
-  # end
+      it "should contain the rspec gem in the test group using block syntax" do
+        expect(@gemfile_text =~ /group (:test|['"]test['"]) do/).not_to eq(nil)
+        expect(@bundle_output =~ /rspec/).not_to eq(nil)
+
+        bundle_output_without_test = ""
+        Bundler.with_clean_env do
+          bundle_output_without_test = `bundle --without test`
+        end
+        expect(bundle_output_without_test =~ /rspec/).to eq(nil)
+      end
+    end
+  end
 
   # This may exist from having run bundle install in other tests
   describe "bundle install" do
